@@ -94,7 +94,7 @@ const getbestmove = () => {
     });
 };
 const updateposition = (pos) => {
-  fetch(`http://127.0.0.1:8080/uci/position/?fen=${pos}`)
+  fetch(`http://127.0.0.1:8080/uci/position?fen=${pos}`)
     .then((T) => T.json())
     .then((response) => {
       console.log("Position updated!");
