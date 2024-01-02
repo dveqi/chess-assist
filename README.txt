@@ -11,8 +11,10 @@ Currently implemented endpoints are the following:
 
 == Websites integration ==
 
-In the folder /browser you can find websites integrations.
-You can easily cheat with any engine you may want.
+In the folder /browser you can find websites integrations,
+that you may load with Tampermonkey.
+
+Then you can easily cheat with any engine you may want.
 
 == How to build ==
 
