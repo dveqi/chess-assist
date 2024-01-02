@@ -1,3 +1,15 @@
+// ==UserScript==
+// @name         Chess Assist Browser Plugin (Chess.com)
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  hack the world!
+// @author       dveqi
+// @match        https://www.chess.com/
+// @include      https://www.chess.com/*
+// @icon         https://www.google.com/s2/favicons?domain=chess.com
+// @grant        none
+// ==/UserScript==
+
 const ENV_TEST = 0;
 
 const registeredDrawings = [];
