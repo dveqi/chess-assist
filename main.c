@@ -61,8 +61,6 @@ static void cb(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 
 int main(int argc, char *argv[])
 {
-    msg(INFO, "On\n");
-
     int opt;
     char *path = NULL;
 

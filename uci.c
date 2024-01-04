@@ -211,7 +211,7 @@ void uci_spawn_engine_handler(struct uci_engine* engine, char* raw_message)
 
 int uci_spawn_engine(struct spawn_engine_params *params, struct uci_engine* engine)
 {
-    if (!(params->path) || params->path[0] == '\0') {
+    if (!params || params->path[0] == '\0') {
         msg(ERROR, "Invalid params: missing path\n");
         exit(-1);
         return -1;

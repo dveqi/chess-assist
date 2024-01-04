@@ -26,7 +26,7 @@ struct uci_engine {
 };
 
 struct spawn_engine_params {
-    char *path;
+    char path[255];
 };
 
 int uci_spawn_engine(struct spawn_engine_params *params, struct uci_engine* engine);
