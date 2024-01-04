@@ -157,12 +157,12 @@ void uci_command(
 {
     msg(DEBUG, "Starting uci_command (%s)\n", cmd);
 
-    fprintf(engine->_stdout, cmd);
+    fprintf(engine->_stdin, "%s", cmd);
 
     for (;;) {
         char* line = NULL;
         size_t size = 0;
-        ssize_t bytes_read = getline(&line, &size, engine->_stdin);
+        ssize_t bytes_read = getline(&line, &size, engine->_stdout);
 
         if (bytes_read == -1) {
             msg(ERROR, "EOF Reached\n");
@@ -234,10 +234,10 @@ int uci_set_fen(struct uci_engine* engine, char* fen)
 
     if (strcmp(fen, "startpos") == 0) {
         msg(DEBUG, "dbg (%s)\n", fen);
-        fprintf(engine->_stdout, "position %s\n", fen);
+        fprintf(engine->_stdin, "position %s\n", fen);
     }
     else
-        fprintf(engine->_stdout, "position fen %s\n", fen);
+        fprintf(engine->_stdin, "position fen %s\n", fen);
 
     return 0;
 }

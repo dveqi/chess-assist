@@ -10,15 +10,6 @@
 
 struct uci_engine info;
 
-void add_cors_headers(struct mg_connection *c)
-{
-    static const char *headers = 
-        "Access-Control-Allow-Origin: *\r\n"
-        "Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS\r\n"
-        "Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token\r\n";
-    mg_printf(c, headers);
-}
-
 void handle_options_request(struct mg_connection *c)
 {
     msg(INFO, "Received OPTIONS request\n");
@@ -43,7 +34,8 @@ void process_get_request(struct mg_connection *c, struct mg_http_message *hm)
             MG_ESC("uri"), mg_print_esc, hm->uri.len, hm->uri.ptr,
             MG_ESC("sergio"), mg_print_esc, hm->body.len, hm->body.ptr);
     } else if (mg_vcmp(&hm->uri, "/uci/bestmove") == 0) {
-        uci_bestmove(&info, "10");
+        /* TODO: accept params from frontend */
+        uci_bestmove(&info, "80");
         mg_http_reply(c, 200, "Access-Control-Allow-Origin: *\n", "{%m:%m}\n",
             MG_ESC("bestMove"), mg_print_esc, strlen(info.last_bestmove), info.last_bestmove);
     } else if (mg_vcmp(&hm->uri, "/uci/is_ready") == 0) {
